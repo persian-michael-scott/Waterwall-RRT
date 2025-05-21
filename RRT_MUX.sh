@@ -195,7 +195,7 @@ EOF
 
     if [ "$choice" -eq 1 ]; then
         public_ip=$(wget -qO- https://api.ipify.org)
-        echo "Iran IPv4 is: $public_ip"
+        echo "Iran IPv4/6 is: $public_ip"
         read -p "enter Kharej Ipv4: " ip_remote
         read -p "Enter the SNI (default: sahab.ir): " input_sni
         HOSTNAME=${input_sni:-sahab.ir}
