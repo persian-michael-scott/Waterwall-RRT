@@ -64,6 +64,15 @@ get_latest_release_url() {
 # Function to get download URL for a specific release version
 get_specific_release_url() {
   local version=$1
+  ARCH=$(uname -m)
+  if [ "$ARCH" == "aarch64" ]; then
+    ASSET_NAME="Waterwall-linux-arm64.zip"
+  elif [ "$ARCH" == "x86_64" ]; then
+    ASSET_NAME="Waterwall-linux-64.zip"
+  else
+    echo "Unsupported architecture: $ARCH"
+    exit 1
+  fi
   local api_url="https://api.github.com/repos/$OWNER/$REPO/releases/tags/$version"
 
   echo "Fetching release data for version $version..." >&2
